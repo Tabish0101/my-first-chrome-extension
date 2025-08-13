@@ -1,5 +1,6 @@
 import { Bell, TrendingUp, Users, Sigma, Building2, AlertCircle, CheckCircle, Info, PackageOpen, UserRound } from 'lucide-react'
 import { useEffect, useState } from 'react';
+import { CategoryBadge } from './microComponents/Badge';
 // import { resetUserStats } from '../../public/content';
 
 
@@ -303,11 +304,11 @@ export default function Popup({setOnBoardingStatus}) {
                           {notification.image === "" ? <UserRound className='text-blue-300' strokeWidth={1}/> : <img src={notification.image} alt={notification.title} /> }
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm text-gray-900 leading-tight"> {notification.title} </p>
-                          <div className='flex justify-between items-end'>
-                            <p className="text-xs text-gray-500 mt-0.5">{notification.time}</p>
-                            <p title={notification.type} className='text-xs text-gray-500 cursor-default'>{notification.type[0]}</p>
+                          <div className='flex justify-between items-start'>
+                            <p className="text-sm text-gray-900 leading-tight"> {notification.title}   </p>
+                            <p title={notification.type} className='text-xs text-gray-500 cursor-default'><CategoryBadge category={notification.type}/></p>
                           </div>
+                          <p className="text-xs text-gray-500 mt-0.5">{notification.time}</p>
                         </div>
                       </div>
                     ))}
