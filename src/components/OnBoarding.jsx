@@ -1,4 +1,5 @@
-import {  Users, Eye } from 'lucide-react'
+import banner from '../assets/images/banner-infographics-2.png'
+import profileImage from '../assets/images/profile-image-2.png'
 
 export default function OnBoarding({onBoardingStatus, setOnBoardingStatus}) {
 
@@ -18,7 +19,7 @@ const handlePermission = () => {
             });
             } else {
                 // Request permission
-                // console.log('checking if permission already granted : NO')
+                console.log('checking if permission already granted : NO')
                 console.log('requesting for permission...')
                 chrome.permissions.request(
                 {
@@ -44,59 +45,61 @@ const handlePermission = () => {
 
     
   return (
-    <div className="min-h-screen bg-black/20 flex items-center justify-center p-4">
-      <div className="w-80 max-w-md bg-white rounded-2xl shadow-lg border border-gray-100">
+    <div className="min-h-screen h-[600px] bg-slate-50 flex items-center justify-center p-3">
+      <div className="w-80 h-full flex flex-col max-w-md bg-white rounded-2xl shadow-lg border border-gray-100">
         
         {/* Header */}
-        <div className="text-center pt-8 pb-6 px-6">
-          <div className="flex items-center justify-center mb-4">
+        <div className="text-center pt-6 pb-6 px-6">
+          <div style={{backgroundImage: `url(${banner})`, backgroundSize: "cover", backgroundPosition: "center",}} className="flex items-center justify-center mb-12 bg-blue-300 rounded-md h-18">
             {/* LinkedIn-style logo */}
-            <div className="w-12 h-12 bg-[#0A66C2] rounded-lg flex items-center justify-center mr-3">
-              <Users className="w-7 h-7 text-white" />
+            <div className='p-0.5 border-[1px] border-slate-200 bg-white shadow-2xl shadow-black/70 relative translate-y-8'>
+              <div className="w-12 h-12 bg-[#0A66C2] border-1 border-white flex items-center justify-center">
+                {/* <Linkedin strokeWidth={1} className="w-7 h-7 text-whitw" /> */}
+                <img src={profileImage} alt="" />
+              </div>
             </div>
-            <div className="w-8 h-8 bg-[#0A66C2] rounded-full flex items-center justify-center">
+            {/* <div className="w-8 h-8 bg-[#0A66C2] rounded-full flex items-center justify-center">
               <Eye className="w-4 h-4 text-white" />
-            </div>
+            </div> */}
           </div>
           <h1 className="text-xl font-semibold text-gray-900 leading-tight">
-            <span>Welcome to</span>
+            {/* <span>Welcome to</span>
+            <br /> */}
+            <span className='text-2xl tex-[#0A66C2] text-blue-950'>LinkedIn</span>
             <br />
-            <span className='text-[#0A66C2]'>LinkedIn</span>
-            <br />
-            <span className='text-2xl text-[#0A66C2]'>Profile Visit Tracker</span>
+            <span className=' text-blue-950 tex-[#0A66C2]'>Analytics</span>
           </h1>
         </div>
 
         {/* Intro Text */}
         <div className="px-6 mb-6">
-          <p className="text-gray-600 text-center leading-relaxed">
-            Track the LinkedIn profiles you visit and see who visits you back. 
-            <span className="font-medium text-gray-700"> Your data stays private on your device.</span>
+          <p className="text-blue-900 text-center leading-relaxed">
+            Track the LinkedIn profiles you visit and get a better idea of your activity. 
+            <span className="font-medium text-blue-950"> Your data stays private on your device.</span>
           </p>
         </div>
 
 
         {/* Permission Info Box */}
         <div className="mx-6 mb-6">
-          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
-            <div className="flex items-start space-x-3">
-              <div className="w-5 h-5 bg-[#0A66C2] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-white text-xs font-bold">i</span>
-              </div>
+          <div className="w-5 h-5 bg-[#0A66C2] relative left-[46%] top-2.5 rounded-full flex items-center justify-center">
+            <span className="text-white text-xs font-bold">i</span>
+          </div>
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-center">
+              
               <p className="text-sm text-blue-800 leading-relaxed">
                 We need permission to read LinkedIn pages you visit. This is required for tracking visits.
               </p>
-            </div>
           </div>
         </div>
 
         {/* Action Buttons */}
-        <div className="px-6 pb-6">
+        <div className="px-6 mb-6 flex items-end grow">
             <button 
                 onClick={handlePermission}
-                className="w-full bg-[#0A66C2] hover:bg-[#004182] active:bg-[#003366] text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#0A66C2] focus:ring-offset-2 mb-3"
+                className="w-full !bg-blue-600 hover:!bg-blue-700 active:!bg-blue-800 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#0A66C2] focus:ring-offset-2 mb-3"
             >
-                Grant Permission
+                Start Tracking
             </button>
             {/* <div className='text-black'>
                 debugger: {onBoardingStatus === false ? 'false' : 'true'}

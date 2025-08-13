@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { crx } from '@crxjs/vite-plugin'
 import manifest from './public/manifest.json'
+import { resolve } from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -28,7 +29,8 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       input: {
-        popup: 'index.html'
+        popup: 'index.html',
+        content: 'public/content.js',
       }
     }
   }

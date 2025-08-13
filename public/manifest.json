@@ -3,8 +3,14 @@
   "name": "LinkedIn Profile Visit Tracker",
   "version": "1.0.0",
   "description": "A Chrome extension track your activity for your analysis.",
+  "icons": {
+    "16": "icons/icon-16.png"
+  },
   "action": {
-    "default_popup": "index.html"
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "icons/icon-16.png"
+    }
   },
   "permissions": [
     "activeTab",
@@ -14,13 +20,22 @@
     "https://www.linkedin.com/*"
   ],
   "host_permissions": [
-    "https://www.linkedin.com/*"
+    "https://www.linkedin.com/*",
+    "http://localhost:*/*",
+    "ws://localhost:*/*"
   ],
-  "web_accessible_resources": [
+  "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "resources": ["**/*"],
-      "use_dynamic_url": true
+      "js": ["public/content.js"],
+      "matches": [
+        "https://*.linkedin.com/in/*",
+        "https://*.linkedin.com/company/*",
+        "https://*.linkedin.com/jobs/*",
+        "https://*.linkedin.com/school/*",
+        "https://linkedin.com/in/*",
+        "https://linkedin.com/company/*"
+      ],
+      "run_at": "document_end"
     }
   ],
   "content_security_policy": {
